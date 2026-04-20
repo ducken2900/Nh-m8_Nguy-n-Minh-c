@@ -36,6 +36,6 @@ class CustomButton(ttk.Button):
         elif self.style_type == "secondary":
             style.configure('Secondary.TButton',
                            font=('Arial', 10),
-                           foreground='gray')
+                           foreground='black')
             
         self.configure(style=f'{self.style_type.capitalize()}.TButton')

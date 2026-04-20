@@ -15,7 +15,9 @@ class QuanLyTaiKhoanPage:
     def view(self):
         tk.Label(self.master, text="QUẢN TRỊ HỆ THỐNG", font=("Arial", 18, "bold"), fg="#2980b9").pack(pady=10)
         nb = ttk.Notebook(self.master)
-        nb.pack(expand=True, fill="both", padx=10, pady=10)
+        nb.pack(expand=True, fill="both", padx=10, pady=5)
+        toolbar = tk.Frame(self.master, bg="white", bd=1, relief="ridge")
+        toolbar.pack(fill="x", padx=20, pady=10)
 
         # Tab Nhân viên
         t1 = tk.Frame(nb);
@@ -24,10 +26,12 @@ class QuanLyTaiKhoanPage:
         btn_f.pack(pady=5)
         CustomButton(btn_f, text="+ Thêm NV mới", command=self.app_manager.show_register_page,
                      style_type="success").pack(side="left", padx=5)
-        CustomButton(btn_f, text="Sửa thông tin", command=self.edit_user, style_type="warning").pack(side="left",
-                                                                                                     padx=5)
-        CustomButton(btn_f, text="Xóa tài khoản", command=self.delete_user, style_type="danger").pack(side="left",
+        CustomButton(btn_f, text="📝 Sửa thông tin", command=self.edit_user, style_type="warning").pack(side="left",
                                                                                                       padx=5)
+        CustomButton(btn_f, text="🗑 Xóa tài khoản", command=self.delete_user, style_type="danger").pack(side="left",
+                                                                                                      padx=5)
+        CustomButton(self.master, text="⬅ Về Menu", command=self.app_manager.show_menu_page, style_type="secondary").pack(side="right", padx=10,
+                                                                                                      pady=5)
 
         cols1 = ("STT", "User", "HoTen", "SDT", "VaiTro")
         self.tree1 = ttk.Treeview(t1, columns=cols1, show="headings")
@@ -47,8 +51,6 @@ class QuanLyTaiKhoanPage:
         self.tree2.pack(expand=True, fill="both", padx=5);
         self.load_history()
 
-        CustomButton(self.master, text="Về Menu", command=self.app_manager.show_menu_page, style_type="secondary").pack(
-            pady=10)
 
     def load_users(self):
         for i in self.tree1.get_children(): self.tree1.delete(i)
