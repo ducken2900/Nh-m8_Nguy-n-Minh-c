@@ -22,17 +22,19 @@ class QuanLyTaiKhoanPage:
         # Tab Nhân viên
         t1 = tk.Frame(nb);
         nb.add(t1, text=" Danh sách nhân viên ")
-        btn_f = tk.Frame(t1);
-        btn_f.pack(pady=5)
-        CustomButton(btn_f, text="+ Thêm NV mới", command=self.app_manager.show_register_page,
-                     style_type="success").pack(side="left", padx=5)
+        btn_f = tk.Frame(t1, bg="#f8f9fa", bd=1, relief="ridge");
+        btn_f.pack(fill="x", padx=10, pady=(10, 0))
+        CustomButton(btn_f, text="+ Thêm NV mới", command=self.app_manager.show_register_page,style_type="success").pack(side="left",
+                                                                                                                         padx=5,pady=5)
         CustomButton(btn_f, text="📝 Sửa thông tin", command=self.edit_user, style_type="warning").pack(side="left",
-                                                                                                      padx=5)
+                                                                                                      padx=5, pady=5)
         CustomButton(btn_f, text="🗑 Xóa tài khoản", command=self.delete_user, style_type="danger").pack(side="left",
-                                                                                                      padx=5)
+                                                                                                      padx=5, pady=5)
         CustomButton(self.master, text="⬅ Về Menu", command=self.app_manager.show_menu_page, style_type="secondary").pack(side="right", padx=10,
-                                                                                                      pady=5)
+                                                                                                      pady=5,)
 
+        tree_container = tk.Frame(t1)
+        tree_container.pack(expand=True, fill="both", padx=10, pady=(0, 10))
         cols1 = ("STT", "User", "HoTen", "SDT", "VaiTro")
         self.tree1 = ttk.Treeview(t1, columns=cols1, show="headings")
         for c, h in zip(cols1, ["STT", "User", "Họ tên", "SĐT", "Vai trò"]):
