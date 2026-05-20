@@ -8,6 +8,7 @@ from page.quanly_kho import QuanLyKhoPage
 from page.quanly_taikhoan import QuanLyTaiKhoanPage
 from page.suatk import SuaTKPage
 from page.sua_nhanvien import SuaNhanVienPage
+from page.baocao import BaoCaoPage  # THÊM TRANG BÁO CÁO
 
 
 class AppManager:
@@ -39,7 +40,7 @@ class AppManager:
 
     def show_menu_page(self):
         self.clear_current_page()
-        self.root.geometry("450x450")
+        self.root.geometry("500x550")  # Tăng kích thước Menu để chứa thêm nút
         self.current_page = MenuPage(self.root, self)
 
     def show_register_page(self):
@@ -71,6 +72,11 @@ class AppManager:
         self.clear_current_page()
         self.root.geometry("500x550")
         self.current_page = SuaNhanVienPage(self.root, self, data)
+
+    def show_baocao_page(self):  # HÀM MỞ TRANG BÁO CÁO
+        self.clear_current_page()
+        self.root.geometry("750x650")
+        self.current_page = BaoCaoPage(self.root, self)
 
     def run(self):
         self.root.mainloop()
